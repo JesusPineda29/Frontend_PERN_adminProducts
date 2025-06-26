@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+import { getProducts } from "../services/ProductService";
+import { ProductDetails } from "../components/ProductDetails";
+import type { Product } from "../types";
 
 
+export async function loader() {
+    // Aquí podrías cargar los productos desde una API o base de datos
+    const products = await getProducts()
+    return products
+}
 
 export const Products = () => {
+
+
+    const products = useLoaderData() as Product[]
+
+
+
     return (
         <>
             <div className="flex justify-between">
@@ -13,6 +27,27 @@ export const Products = () => {
                 >
                     Agregar Producto
                 </Link>
+            </div>
+
+            <div className="p-2">
+                <table className="w-full mt-5 table-auto">
+                    <thead className="bg-slate-800 text-white">
+                        <tr>
+                            <th className="p-2">Producto</th>
+                            <th className="p-2">Precio</th>
+                            <th className="p-2">Disponibilidad</th>
+                            <th className="p-2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map(product => (
+                            <ProductDetails
+                                key={product.id}
+                                product={product}
+                            />
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </>
     )
