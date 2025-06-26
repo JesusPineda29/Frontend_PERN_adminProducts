@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import type { Product } from "../types"
 import { formatCurrency } from "../utils"
 
@@ -21,7 +22,12 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                 {isAvailable}
             </td>
             <td className="p-3 text-lg text-gray-800 ">
-                
+                <div className="flex gap-2 items-center">
+                    <Link
+                        to={`/Productos/${product.id}/editar`}
+                        className="bg-sky-600 text-white rounded-lg w-full  text-center font-bold uppercase shadow-md hover:bg-sky-500 transition-colors"
+                    >Editar</Link>
+                </div>
             </td>
         </tr>
     )
