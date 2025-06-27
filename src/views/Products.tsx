@@ -10,6 +10,11 @@ export async function loader() {
     return products
 }
 
+export async function action() {
+    console.log('desde Action de actualizar ')
+    return {}
+}
+
 export const Products = () => {
 
 
