@@ -1,7 +1,7 @@
 import { Link, Form, useActionData, redirect, useLoaderData } from "react-router-dom";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
-import { addProduct, getProductsById, updateProduct } from "../services/ProductService";
+import { getProductsById, updateProduct } from "../services/ProductService";
 import type { Product } from "../types";
 import { ProductForm } from "../components/ProductForm";
 
@@ -90,7 +90,7 @@ export const EditProduct = () => {
                         ))}
                     </select>
                 </div>
-                
+
                 <input
                     type="submit"
                     className="mt-5 w-full bg-sky-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
