@@ -37,7 +37,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                         type="submit"
                         name="id"
                         value={product.id}
-                        className={`${isAvailable ? 'text-black' : 'text-red-600'} rounded-lg p-2 text-xs uppercase font-bold w-full text-center border border-gray-300 hover:cursor-pointer`}
+                        className={`${isAvailable ? 'text-black' : 'text-red-600'} rounded-lg p-2 text-xs uppercase font-bold w-full text-center border border-gray-300 hover:cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 cursor-pointer`}
                     >
                         {isAvailable ? "Disponible" : "No disponible"}
                         <input type="hidden" name="id" value={product.id} />

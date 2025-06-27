@@ -1,5 +1,5 @@
 import { Link, useLoaderData, type ActionFunctionArgs } from "react-router-dom"
-import { getProducts } from "../services/ProductService";
+import { getProducts, updateProductAvailability } from "../services/ProductService";
 import { ProductDetails } from "../components/ProductDetails";
 import type { Product } from "../types";
 
@@ -13,7 +13,7 @@ export async function loader() {
 
 export async function action({request} : ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData());
-    console.log(data)
+    await updateProductAvailability(+data.id)
     return {}
 }
 
@@ -30,7 +30,7 @@ export const Products = () => {
                 <h2 className="text-4xl font-black text-slate-500">Productos</h2>
                 <Link
                     to={"/Productos/nuevo"}
-                    className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500"
+                    className="rounded-md bg-sky-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-sky-500 transition duration-200 ease-in-out transform hover:scale-105 cursor-pointer"
                 >
                     Agregar Producto
                 </Link>
@@ -60,3 +60,4 @@ export const Products = () => {
     )
 }
 
+// transition duration-200 ease-in-out transform hover:scale-105 cursor-pointer
